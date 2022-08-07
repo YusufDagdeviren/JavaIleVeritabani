@@ -521,7 +521,7 @@ public class EmployeeController {
          employeeController.addEmployee(employee);
          employeeController.addEmployee(employee2);
 ```
-
+      ![foto](https://github.com/YusufDagdeviren/JavaIleVeritabani/blob/main/ScreenShot/ss1.png)
 ```java
          // Bütün verileri çekme
          List<Employee> list = new ArrayList<>();
