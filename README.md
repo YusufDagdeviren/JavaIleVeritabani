@@ -56,7 +56,7 @@ dbConnection.close();
 # Veritabanı Bağlantısı
 
 - Genel olarak veritabanı bağlantı aşamaları yukardaki gibi olsa da eksikdir veri tabanı bağlantısının tam olması için src dosyası içinde [db.properties](http://db.properties) adında bir dosya yazmamız gerekmektedir. Aşağıda olması gerektiği gibidir
-
+```
 driver=org.postgresql.Driver
 
 url=jdbc:postgresql://localhost:15432/Company
@@ -64,7 +64,7 @@ url=jdbc:postgresql://localhost:15432/Company
 username=postgres
 
 password=1234
-
+```
 - Bağlantıyı gerçekleştirebilmek için ve bağlantıyı kapatabilmek için [db.properties](http://db.properties) içindeki özellikleri Connection sınıfımızda tanımlamamız gerekiyor Bunun için [DButil.java](http://DBUtil.java) adında bir sınıf yazdım.
 
 ```java
