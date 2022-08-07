@@ -530,26 +530,26 @@ public class EmployeeController {
              System.out.println("Adi: "+e.getName()+" Soyadi: "+e.getLastname()+" Maasi: "+e.getSalary());
          }
 ```
-
+![foto](https://github.com/YusufDagdeviren/JavaIleVeritabani/blob/main/ScreenShot/ss2.png)
 ```java
          // Id ye göre Veri çekme
          int id = 6;
          Employee e = employeeController.getEmployee(id);
          System.out.println("Adi: "+e.getName()+" Soyadi: "+e.getLastname()+" Maasi: "+e.getSalary());
 ```
-
+![foto](https://github.com/YusufDagdeviren/JavaIleVeritabani/blob/main/ScreenShot/ss3.png)
 ```java
          // Veri Silme
          Employee employee1 = new Employee(5,"Yusuf", "Dagdeviren", 80000);
          employeeController.deleteEmployee(employee1);
 ```
-
+![foto](https://github.com/YusufDagdeviren/JavaIleVeritabani/blob/main/ScreenShot/ss4.png)
 ```java
       // Veri updateleme
         Employee employee3 = new Employee(6,"Zehra", "Cakir", 134567);
         employeeController.updateEmployee(employee3);
 ```
-
+![foto](https://github.com/YusufDagdeviren/JavaIleVeritabani/blob/main/ScreenShot/ss5.png)
 # Transation Yöntemi
 
 Veri tabanında işlem yaparken (Ekleme Silme Update) gibi işlemlerde hata aldığımızda yaptığımız işlemlerin iptal olmasını ve belli bir bütünlükte olmasını istiyorsak transation yöntemini kullanırız.
