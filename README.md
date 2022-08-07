@@ -606,3 +606,4 @@ Pom.xml dosyasına ekledim jar olarak indirmedim:
 
 - 3.pgAdmin4
 - 4.Java JDK.
+- 5.Visual Studio Code
