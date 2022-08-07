@@ -17,7 +17,7 @@
 Class.forName("org.postgresql.Driver");
 ```
 
-1. Sürücü sınıf belirlendikten hemen sonra veri tabanı bağlantısı kurulur. Modern veri tabanı yönetim sistemlerinin istemci-sunucu (client-server) mimarisinden oluştuğunu bahsetmiştik.
+2. Sürücü sınıf belirlendikten hemen sonra veri tabanı bağlantısı kurulur. Modern veri tabanı yönetim sistemlerinin istemci-sunucu (client-server) mimarisinden oluştuğunu bahsetmiştik.
 
 ```java
 Connection dbConnection = DriverManager.getConnection(  
@@ -26,7 +26,7 @@ Connection dbConnection = DriverManager.getConnection(
 
 DriverManager sınıfındaki “getConnection” fonksiyonu ile veri tabanına bir bağlantı açarız. Bu fonksiyona uzak bir sunucuda yer alan veri tabanı sunucu adresimizi vereceğiz. Bu adres IP ve Hostname şeklinde olabilir. Burada “localhost” sunucusundaki Postgresql sunucusuna bağlanacağımı söylüyorum. Ardından, bağlantı kuracak kullanıcının, kullanıcı adı ve şifresini veriyorum. Böylece, veri tabanı sunucusuna bir bağlantı açmış oluyorum.
 
-1. Bağlantı kurulduktan sonra JDBC API ile artık sorgu çalıştırabiliriz.
+3. Bağlantı kurulduktan sonra JDBC API ile artık sorgu çalıştırabiliriz.
 
 ```java
 Statement statement = dbConnection.createStatement();
@@ -34,7 +34,7 @@ Statement statement = dbConnection.createStatement();
 
 “dbConnection” isimli nesne veri tabanı sunucusuyla aramızdaki bağlantı nesnesidir. Bu nesne üzerinden “createStatement” fonksiyonu ile sorgu hazırlayabileceğimiz “Statement” tipinde bir nesne alırız. SQL sorgumuzu bu sorgu üzerinden yapacağız.
 
-1. Sorgu nesnemiz hazır olduğu için bir SQL ifadesi hazırlayıp veri tabanı sunucusunda bu sorgu işletilir ve sorgu sonucu “ResultSet” tipinde bir nesne ile geri döndürülür.
+4. Sorgu nesnemiz hazır olduğu için bir SQL ifadesi hazırlayıp veri tabanı sunucusunda bu sorgu işletilir ve sorgu sonucu “ResultSet” tipinde bir nesne ile geri döndürülür.
 
 ```java
 ResultSet resultSet = statement.executeQuery("select * from employees");  
@@ -47,7 +47,7 @@ while(resultSet.next())
 
 “executeQuery” fonksiyonu ile veri tabanı sunucusuna basit “SELECT” sorgusu attık. Bunun sonucunda “ResultSet” tipinde bir nesnede veri tabanından dönen kayıtlar geldi. Bu kayıtları bir “while” döngüsü ile işletip erişebiliriz. “next” fonksiyonu her çağrıldığında sonuç kümesinden bir satır kayıt getirir. Bu satır üzerindeki sütunlara indis yoluyla veya direkt sütun isimlerini vererek erişebiliriz.
 
-1. İşimiz bitince veri tabanı sunucu ile olan bağlantımızı kapatırız.
+5. İşimiz bitince veri tabanı sunucu ile olan bağlantımızı kapatırız.
 
 ```java
 dbConnection.close();
@@ -217,7 +217,7 @@ public List<Employee> getAllEmployee() {
     }
 ```
 
-1. VeriTabanımıza Eleman ekleyelim bunun için metodumun parametresi olarak employee nesnesini alacağım ve bu nesneyi veri tabanıma ekleyeceğim. Ekleme işlemlerinde JDBC ile alakalı PreparedStatement sınıfı kullanırım çünkü bu sınıf ile dinamik sql sorguları(Sonradan değiştirilebilir) yazabilirim.
+5. VeriTabanımıza Eleman ekleyelim bunun için metodumun parametresi olarak employee nesnesini alacağım ve bu nesneyi veri tabanıma ekleyeceğim. Ekleme işlemlerinde JDBC ile alakalı PreparedStatement sınıfı kullanırım çünkü bu sınıf ile dinamik sql sorguları(Sonradan değiştirilebilir) yazabilirim.
 
 ```java
 public void addEmployee(Employee employee) {
@@ -245,7 +245,7 @@ public void addEmployee(Employee employee) {
     }
 ```
 
-1. Veritabanımızda update işlemi yaparken de preparedstatement nesnesi kullanırız ekleme işlemine oldukça benzer bir yol izleriz ‘?’ olan yerleri preparedStatement.setString diyerek indexlere sırasıyla gireriz.
+6. Veritabanımızda update işlemi yaparken de preparedstatement nesnesi kullanırız ekleme işlemine oldukça benzer bir yol izleriz ‘?’ olan yerleri preparedStatement.setString diyerek indexlere sırasıyla gireriz.
 
 ```java
 public void updateEmployee(Employee employee) {
@@ -275,7 +275,7 @@ public void updateEmployee(Employee employee) {
     }
 ```
 
-1. Veritabanımızda silme işlemi yaparken de preparedStatement nesnesi kullanır dinamik sql sorgusu yaparız ve ? isareti gelen yerlere ilgili değerleri verip veri tabanı işlemimizi devam ettiririz update,delete,insert işlemleri genel olarak birbirlerine çok benzerler.
+7. Veritabanımızda silme işlemi yaparken de preparedStatement nesnesi kullanır dinamik sql sorgusu yaparız ve ? isareti gelen yerlere ilgili değerleri verip veri tabanı işlemimizi devam ettiririz update,delete,insert işlemleri genel olarak birbirlerine çok benzerler.
 
 ```java
 public void deleteEmployee(Employee employee) {
@@ -300,7 +300,7 @@ public void deleteEmployee(Employee employee) {
     }
 ```
 
-1. Id ye göre calisan sorgulama işlemi yaparken bir veri döneceğinden dolayı ResultSet’i kullanırız ayrıca dinamik bir sorgu yapacağımız için preparedStatement nesnesi kullanırız.
+8. Id ye göre calisan sorgulama işlemi yaparken bir veri döneceğinden dolayı ResultSet’i kullanırız ayrıca dinamik bir sorgu yapacağımız için preparedStatement nesnesi kullanırız.
 
 ```java
 public Employee getEmployee(int id) {
@@ -338,7 +338,7 @@ public Employee getEmployee(int id) {
     }
 ```
 
-1. Yazdığımız Dao sınıfının son hali.
+9. Yazdığımız Dao sınıfının son hali.
 
 ```java
 public class EmployeeDao {
@@ -484,7 +484,7 @@ public class EmployeeDao {
 }
 ```
 
-1. Kod karışıklığını gidermek için ve daha anlaşılır kod yazımı için yazdığımız dao sınıfını kullanacağım. Veritabanı işlemlerini bir katman daha soyutlayacağım ve bunun için Controller sınıfı yazacağım.
+10. Kod karışıklığını gidermek için ve daha anlaşılır kod yazımı için yazdığımız dao sınıfını kullanacağım. Veritabanı işlemlerini bir katman daha soyutlayacağım ve bunun için Controller sınıfı yazacağım.
 
 ```java
 public class EmployeeController {
@@ -512,7 +512,7 @@ public class EmployeeController {
 }
 ```
 
-1. Gelin veri tabanı işlemlerimizi main de test edelim.
+11. Gelin veri tabanı işlemlerimizi main de test edelim.
 
 ```java
          //Veri Ekleme
